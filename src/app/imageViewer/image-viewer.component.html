@@ -1,0 +1,28 @@
+<mat-toolbar>
+    <span class="header">Instagram Clone</span>
+</mat-toolbar>
+
+<div *ngIf="isError">Some error occured while retrieving the data from the server.</div>
+<div *ngIf="!isError">
+    <div matSort (matSortChange)="sortData($event)">
+        <div class="sort-header">Sort By : </div>
+        <div mat-sort-header="Likes">Likes</div>
+        <div mat-sort-header="TimeStamp">TimeStamp</div>
+    </div>
+
+    <div class="content">
+        <div *ngFor="let item of data">
+            <mat-card class="card">
+                <img mat-card-image src={{item.Image}}>
+                <mat-card-content>
+                    <div>
+                        Likes : {{item.likes}}
+                    </div>
+                    <div>
+                        TimeStamp : {{item.timestamp}}
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
